@@ -9,9 +9,6 @@ pipeline {
             }
         }
         stage('Build Docker Image') {
-            when {
-                branch 'example-solution'
-            }
             steps {
                 script {
                     app = docker.build("nicholasgull/train-schedule")
@@ -22,9 +19,6 @@ pipeline {
             }
         }
         stage('Push Docker Image') {
-            when {
-                branch 'example-solution'
-            }
             steps {
                 script {
                     docker.withRegistry('https://registry.hub.docker.com', 'dhubtoken') {
@@ -35,9 +29,6 @@ pipeline {
             }
         }
         stage('DeployToProduction') {
-            when {
-                branch 'example-solution'
-            }
             steps {
                 input 'Deploy to Production?'
                 milestone(1)
