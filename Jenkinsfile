@@ -1,3 +1,4 @@
+List<String> CHOICES = [];
 pipeline {
     agent any
     stages {
@@ -17,6 +18,24 @@ pipeline {
                     }
                 }
             }
+        }
+        stage('User Input') {
+
+            steps {
+                script {
+
+                        CHOICES = ["Apply", "DoNotApply"];   
+
+                        env.YourTag = input  message: 'Do you want to Apply Plan?',ok : 'Deploy',id :'tag_id',
+
+                                        parameters:[choice(choices: CHOICES, description: 'Select a tag for this build', name: 'POLICY PASSED')]
+
+                        }          
+
+                echo "Deploying ${env.YourTag}. Apply Plan."
+
+            }
+
         }
         stage('Push Docker Image') {
             steps {
