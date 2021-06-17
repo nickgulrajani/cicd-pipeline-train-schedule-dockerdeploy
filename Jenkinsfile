@@ -24,15 +24,15 @@ pipeline {
             steps {
                 script {
 
-                        CHOICES = ["Apply", "DoNotApply"];   
+                        CHOICES = ["Deploy", "DoNotDeploy"];   
 
-                        env.YourTag = input  message: 'Do you want to Apply Plan?',ok : 'Deploy',id :'tag_id',
+                        env.YourTag = input  message: 'Do you want to Deploy the Image?',ok : 'Deploy',id :'tag_id',
 
                                         parameters:[choice(choices: CHOICES, description: 'Select a tag for this build', name: 'POLICY PASSED')]
 
                         }          
 
-                echo "Deploying ${env.YourTag}. Apply Plan."
+                echo "Deploying ${env.YourTag}. Deploy Image."
 
             }
 
