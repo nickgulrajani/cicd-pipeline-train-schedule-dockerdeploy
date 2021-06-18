@@ -16,7 +16,7 @@ pipeline {
                     app.inside {
                         sh """
                         echo \$(curl localhost:8080)
-                        docker scan nicholasgull/train-schedule
+                        /usr/bin/docker scan nicholasgull/train-schedule
                         """
                     }
                 }
