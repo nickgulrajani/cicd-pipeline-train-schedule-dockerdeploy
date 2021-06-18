@@ -19,7 +19,10 @@ pipeline {
                         """
                     }
                 }
-                sh '/usr/bin/docker scan "nicholasgull/train-schedule"'
+                sh """
+                   /usr/bin/docker scan "nicholasgull/train-schedule"
+                   echo y
+                   """
             }
         }
         stage('User Input') {
