@@ -13,7 +13,6 @@ pipeline {
             steps {
                 script {
                     app = docker.build("nicholasgull/train-schedule")
-                    app = docker.scan("nicholasgull/train-schedule")
                     app.inside {
                         sh """
                         echo \$(curl localhost:8080)
