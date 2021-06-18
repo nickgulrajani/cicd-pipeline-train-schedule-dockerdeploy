@@ -21,9 +21,11 @@ pipeline {
                 }
                 sh """
                    /usr/bin/docker scan "nicholasgull/train-schedule"
-                   echo y
                    """
-            }
+                script {
+                        CHOICES = ["Y"];
+        }
+        }
         }
         stage('User Input') {
 
