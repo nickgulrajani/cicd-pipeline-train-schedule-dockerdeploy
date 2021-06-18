@@ -9,12 +9,15 @@ pipeline {
                 archiveArtifacts artifacts: 'dist/trainSchedule.zip'
             }
         }
-        stage('Build Docker Image') {
+        stage('Build and Scan Docker Image') {
             steps {
                 script {
                     app = docker.build("nicholasgull/train-schedule")
                     app.inside {
-                        sh 'echo $(curl localhost:8080)'
+                        sh """
+                        'echo $(curl localhost:8080)'
+                        'docker scan nicholasgull/train-schedule'
+                        """
                     }
                 }
             }
