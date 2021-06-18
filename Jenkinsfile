@@ -15,7 +15,7 @@ pipeline {
                     app = docker.build("nicholasgull/train-schedule")
                     app.inside {
                         sh """
-                        echo $(curl localhost:8080)
+                        echo \$(curl localhost:8080)
                         docker scan nicholasgull/train-schedule
                         """
                     }
