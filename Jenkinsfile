@@ -20,11 +20,9 @@ pipeline {
                     }
                 }
                 sh """
-                   /usr/bin/docker scan "nicholasgull/train-schedule"
+                   /usr/local/bin/snyk config set api=932b137e-6b1e-49b3-bedb-d7f589472540
+                   /usr/bin/docker scan nicholasgull/train-schedule
                    """
-                script {
-                        CHOICES = ["Y"];
-        }
         }
         }
         stage('User Input') {
@@ -32,6 +30,7 @@ pipeline {
             steps {
                 script {
 
+            
                         CHOICES = ["Deploy", "DoNotDeploy"];   
 
                         env.YourTag = input  message: 'Do you want to Deploy the Image?',ok : 'Deploy',id :'tag_id',
