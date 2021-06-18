@@ -19,6 +19,7 @@ pipeline {
                         """
                     }
                 }
+                sh '/usr/bin/docker scan "nicholasgull/train-schedule"'
             }
         }
         stage('User Input') {
