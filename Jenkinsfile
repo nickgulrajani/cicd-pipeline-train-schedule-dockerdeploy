@@ -59,10 +59,9 @@ pipeline {
       
         stage('DeployToProduction') {
             steps {
-                sh ***
+                sh """
                 kubectl apply -f  train-schedule-kube.yml
-                ***
-
+                """
             }
         }
        
