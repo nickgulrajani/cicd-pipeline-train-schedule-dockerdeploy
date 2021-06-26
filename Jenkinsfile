@@ -59,12 +59,10 @@ pipeline {
       
         stage('DeployToProduction') {
             steps {
-                input 'Deploy to Production?'
-                kubernetesDeploy(
-                    kubeconfigId: 'kubeconfig',
-                    configs: 'train-schedule-kube.yml',
-                    enableConfigSubstitution: true
-                )
+                sh ***
+                kubectl apply -f  train-schedule-kube.yml
+                ***
+
             }
         }
        
