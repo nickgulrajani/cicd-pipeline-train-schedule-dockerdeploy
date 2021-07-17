@@ -56,23 +56,5 @@ pipeline {
                 }
             }
         }
-        stage('CanaryDeploy') {
-            environment {
-                CANARY_REPLICAS = 1
-            }
-            steps {
-                sh """
-                gcloud container clusters get-credentials nick-one-kub-healthcheck --zone us-central1-c --project devsecops-311418
-                pwd
-                ls
-                cd /var/lib/jenkins/workspace/auto-deploy-trainschedule-app
-                pwd
-                ls
-                kubectl apply -f /var/lib/jenkins/workspace/auto-deploy-trainschedule-app/train-schedule-kube-canary.yml --validate=false
-                kubectl get service
-                kubectl get pods
-                """
-            }
-        }
     }
 }
